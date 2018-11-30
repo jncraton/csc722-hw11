@@ -1,3 +1,45 @@
-% Title
-% Author
-% August 5th, 2018
+% CSC722 HW11
+% Jon Craton
+
+> The whole work for homework and finals are required. The final results are not acceptable.
+
+> Apply the gradient descent algorithm for the following function for 3 iterations assuming learning rate alpha = 0.01 
+
+Problem 1
+=========
+
+$f(x) = x^2 + 1$
+
+As the name implies, the first step to gradient descent is calculating our gradient. For this expression that is:
+
+$f(x) = x^2 + 1$
+
+$f'(x) = 2x$
+
+Now, we pick a point at random. Let's start from x=.6. We plug that in to our derivative to get the gradient at that point:
+
+$f'(.6) = 2(.6) = 1.2$
+
+Then we adjust our guess based on the local gradient and learning rate as:
+
+$x_0 = .6$
+
+$x_{n+1} = x_n - αf'(x_n)$
+
+$α=.01$
+
+$x_1 = .6 - (.01)(1.2)$
+
+```python
+.6 - .01*1.2
+```
+
+Problem 2
+=========
+
+f(x,y) = (x-7)^2 + (y-3)^2 
+
+Problem 3
+=========
+
+f(x,y) = (x^2)/10 + 10 y^2 
