@@ -16,7 +16,15 @@ $f(x) = x^2 + 1$
 
 $f'(x) = 2x$
 
-Now, we pick a point at random. Let's start from x=.6. We plug that in to our derivative to get the gradient at that point:
+Initial Guess
+-------------
+
+Now, we pick a point at random. Let's start from x=.6. 
+
+Iteration 1
+-----------
+
+We plug our current value into our derivative to get the gradient at that point:
 
 $f'(.6) = 2(.6) = 1.2$
 
