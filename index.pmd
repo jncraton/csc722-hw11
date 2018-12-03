@@ -6,6 +6,9 @@
 > Apply the gradient descent algorithm for the following function for 3 iterations assuming learning rate alpha = 0.01 
 
 ```python, echo=False
+from sympy import init_printing, latex
+init_printing(use_unicode=True)
+
 def tex(l,v=''):
   if v:
     v += ' = '
@@ -100,8 +103,7 @@ Python Implementation
 Let's implement this algorithm in Python to solidify our understanding.
 
 ```python
-from sympy import Symbol, diff, init_printing, latex
-init_printing(use_unicode=True)
+from sympy import Symbol, diff
 
 x = Symbol('x')
 y = Symbol('y')
@@ -114,12 +116,17 @@ def gradient_descent(f, x, x_0, α, n=1):
   [0.564715200000000]
   >>> gradient_descent((x-7)**2 + (y-3)**2, [x,y], [.7,.7], .01, n=3)
   [1.07049040000000, 0.835258400000000]
+
+  With a large n, this gets us close to the true minimum (7,3) in
+  the following example:
+  
+  >>> gradient_descent((x-7)**2 + (y-3)**2, [x,y], [.7,.7], .01, n=500)
+  [6.99974154889359, 2.99990564483416]
   """
 
-  if n==0:
-    return x_0
+  x_n = [v0 - α*diff(f,v).subs(v, v0) for (v,v0) in zip(x, x_0)]
 
-  x_n = [i[1] - α*diff(f,i[0]).subs(i[0], i[1]) for i in zip(x, x_0)]
+  if n==1: return x_n
   
   return gradient_descent(f, x, x_n, α, n=n-1)
 ```
