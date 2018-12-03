@@ -5,6 +5,14 @@
 
 > Apply the gradient descent algorithm for the following function for 3 iterations assuming learning rate alpha = 0.01 
 
+```python, echo=False
+def tex(l,v=''):
+  if v:
+    v += ' = '
+
+  print('$%s%s$' % (v,latex(l)))
+```
+
 Problem 1
 =========
 
@@ -142,15 +150,229 @@ $f(x,y) = (x-7)^2 + (y-3)^2$
 
 Before we can begin to apply the numeric portion of our algorithm, we'll need to take our partial derivatives so that we can craft a gradient to follow.
 
-$f(x,y) = (x-7)^2 + (y-3)^2$
-
 ```python,results='tex'
-latex(diff((x-7)**2 + (y-3)**2, x))
-print(diff((x-7)**2 + (y-3)**2, x, y))
+f = (x-7)**2 + (y-3)**2
+tex(f)
 ```
 
+```python,results='tex'
+tex(diff(f, x))
+```
+
+```python,results='tex'
+tex(diff(f, y))
+```
+
+Let's also pick some starting values:
+
+```python
+x_n = .7
+y_n = .7
+```
+
+Iteration 1
+-----------
+
+We plug our current value into our gradients:
+
+$α=.01$
+
+First for x:
+
+$x_{n+1} = x_n - αf'(x_n)$
+
+```python
+x_n = x_n - .01*(2*x_n-14)
+print(x_n)
+```
+
+Then for y:
+
+$y_{n+1} = y_n - αf'(y_n)$
+
+```python
+y_n = y_n - .01*(2*y_n-6)
+print(y_n)
+```
+
+We can quickly check this against our Python implementation:
+
+```python
+print(gradient_descent(f,[x,y],[.7,.7],α=.01,n=1))
+```
+
+Iteration 2
+-----------
+
+We plug our current value into our gradients:
+
+$α=.01$
+
+First for x:
+
+$x_{n+1} = x_n - αf'(x_n)$
+
+```python
+x_n = x_n - .01*(2*x_n-14)
+print(x_n)
+```
+
+Then for y:
+
+$y_{n+1} = y_n - αf'(y_n)$
+
+```python
+y_n = y_n - .01*(2*y_n-6)
+print(y_n)
+```
+
+Iteration 3
+-----------
+
+We plug our current value into our gradients:
+
+$α=.01$
+
+First for x:
+
+$x_{n+1} = x_n - αf'(x_n)$
+
+```python
+x_n = x_n - .01*(2*x_n-14)
+print(x_n)
+```
+
+Then for y:
+
+$y_{n+1} = y_n - αf'(y_n)$
+
+```python
+y_n = y_n - .01*(2*y_n-6)
+print(y_n)
+```
+
+Check
+-----
+
+We can check our result against our Python implementation:
+
+```python
+print(gradient_descent(f,[x,y],[.7,.7],α=.01,n=3))
+```
 
 Problem 3
 =========
 
-f(x,y) = (x^2)/10 + 10 y^2 
+$f(x,y) = (x^2)/10 + 10 y^2$
+
+Before we can begin to apply the numeric portion of our algorithm, we'll need to take our partial derivatives so that we can craft a gradient to follow.
+
+```python,results='tex'
+f = (x**2)/10 + 10*y**2
+tex(f)
+```
+
+```python,results='tex'
+tex(diff(f, x))
+```
+
+```python,results='tex'
+tex(diff(f, y))
+```
+
+Let's also pick some starting values:
+
+```python
+x_n = 1.5
+y_n = 1.5
+```
+
+Iteration 1
+-----------
+
+We plug our current value into our gradients:
+
+$α=.01$
+
+First for x:
+
+$x_{n+1} = x_n - αf'(x_n)$
+
+```python
+x_n = x_n - .01*(x_n/5)
+print(x_n)
+```
+
+Then for y:
+
+$y_{n+1} = y_n - αf'(y_n)$
+
+```python
+y_n = y_n - .01*(20*y_n)
+print(y_n)
+```
+
+We can quickly check this against our Python implementation:
+
+```python
+print(gradient_descent(f,[x,y],[1.5,1.5],α=.01,n=1))
+```
+
+Iteration 2
+-----------
+
+We plug our current value into our gradients:
+
+$α=.01$
+
+First for x:
+
+$x_{n+1} = x_n - αf'(x_n)$
+
+```python
+x_n = x_n - .01*(x_n/5)
+print(x_n)
+```
+
+Then for y:
+
+$y_{n+1} = y_n - αf'(y_n)$
+
+```python
+y_n = y_n - .01*(20*y_n)
+print(y_n)
+```
+
+Iteration 3
+-----------
+
+We plug our current value into our gradients:
+
+$α=.01$
+
+First for x:
+
+$x_{n+1} = x_n - αf'(x_n)$
+
+```python
+x_n = x_n - .01*(x_n/5)
+print(x_n)
+```
+
+Then for y:
+
+$y_{n+1} = y_n - αf'(y_n)$
+
+```python
+y_n = y_n - .01*(20*y_n)
+print(y_n)
+```
+
+Check
+-----
+
+We can check our result against our Python implementation:
+
+```python
+print(gradient_descent(f,[x,y],[1.5,1.5],α=.01,n=3))
+```
