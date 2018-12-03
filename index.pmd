@@ -89,7 +89,12 @@ This shows the basic concept after three iterations. We'd obviously need to cont
 Problem 2
 =========
 
-f(x,y) = (x-7)^2 + (y-3)^2 
+$f(x,y) = (x-7)^2 + (y-3)^2$
+
+Before we can begin to apply the numeric portion of our algorithm, we'll need to take our partial derivatives so that we can craft a gradient to follow.
+
+$f(x,y) = (x-7)^2 + (y-3)^2$
+
 
 Problem 3
 =========
