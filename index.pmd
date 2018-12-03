@@ -86,6 +86,31 @@ $x_2 = .57624 - (.01)(1.15248)$
 
 This shows the basic concept after three iterations. We'd obviously need to continue to get close to our real minimum.
 
+Python Implementation
+---------------------
+
+Let's implement this algorithm in Python to solidify our understanding.
+
+```python
+from sympy import Symbol, diff, init_printing
+init_printing(use_unicode=True)
+
+x = Symbol('x')
+
+def gradient_descent_step(f, x, x_0, α):
+  """
+  Perform one step of gradient descent
+
+  >>> "%.06f" % gradient_descent_step(x**2 + 1, x, .6, .01)
+  '0.588000'
+  >>> "%.06f" % gradient_descent_step(x**2 + 1, x, .588, .01)
+  '0.576240'
+  >>> "%.06f" % gradient_descent_step(x**2 + 1, x, .57624, .01)
+  '0.564715'
+  """
+  return x_0 - α*diff(f,x).subs(x, x_0)
+```
+
 Problem 2
 =========
 
