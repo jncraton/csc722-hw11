@@ -42,6 +42,50 @@ $x_1 = .6 - (.01)(1.2)$
 .6 - .01*1.2
 ```
 
+Iteration 2
+-----------
+
+We plug our new value into our derivative to get the gradient at that point:
+
+$f'(.588) = 2(.588) = 1.176$
+
+Then we adjust our guess based on the local gradient and learning rate as:
+
+$x_1 = .588$
+
+$x_{n+1} = x_n - αf'(x_n)$
+
+$α=.01$
+
+$x_2 = .588 - (.01)(1.176)$
+
+```python
+.588 - (.01)*(1.176)
+```
+
+Iteration 3
+-----------
+
+We plug our new value into our derivative to get the gradient at that point:
+
+$f'(.57624) = 2(.57624) =  1.15248$
+
+Then we adjust our guess based on the local gradient and learning rate as:
+
+$x_1 = .57624$
+
+$x_{n+1} = x_n - αf'(x_n)$
+
+$α=.01$
+
+$x_2 = .57624 - (.01)(1.15248)$
+
+```python
+.57624 - (.01)*(1.15248)
+```
+
+This shows the basic concept after three iterations. We'd obviously need to continue to get close to our real minimum.
+
 Problem 2
 =========
 
