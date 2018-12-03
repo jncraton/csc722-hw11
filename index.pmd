@@ -92,10 +92,11 @@ Python Implementation
 Let's implement this algorithm in Python to solidify our understanding.
 
 ```python
-from sympy import Symbol, diff, init_printing
+from sympy import Symbol, diff, init_printing, latex
 init_printing(use_unicode=True)
 
 x = Symbol('x')
+y = Symbol('y')
 
 def gradient_descent_step(f, x, x_0, α):
   """
@@ -143,10 +144,8 @@ Before we can begin to apply the numeric portion of our algorithm, we'll need to
 
 $f(x,y) = (x-7)^2 + (y-3)^2$
 
-```python
-y = Symbol('y')
-
-print(diff((x-7)**2 + (y-3)**2, x))
+```python,results='tex'
+latex(diff((x-7)**2 + (y-3)**2, x))
 print(diff((x-7)**2 + (y-3)**2, x, y))
 ```
 
