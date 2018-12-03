@@ -101,14 +101,18 @@ def gradient_descent_step(f, x, x_0, α):
   """
   Perform one step of gradient descent
 
-  >>> "%.06f" % gradient_descent_step(x**2 + 1, x, .6, .01)
-  '0.588000'
-  >>> "%.06f" % gradient_descent_step(x**2 + 1, x, .588, .01)
-  '0.576240'
-  >>> "%.06f" % gradient_descent_step(x**2 + 1, x, .57624, .01)
-  '0.564715'
+  Note that x and x_0 are *collections* of variables and values, respectively
+
+  >>> gradient_descent_step(x**2 + 1, [x], [.6], .01)
+  [0.588000000000000]
+  >>> gradient_descent_step(x**2 + 1, [x], [.588], .01)
+  [0.576240000000000]
+  >>> gradient_descent_step(x**2 + 1, [x], [.57624], .01)
+  [0.564715200000000]
   """
-  return x_0 - α*diff(f,x).subs(x, x_0)
+  vars = zip(x, x_0)
+
+  return [i[1] - α*diff(f,i[0]).subs(i[0], i[1]) for i in vars]
 ```
 
 That takes care of one interation, now let's add a helper to perform `n` iterations.
@@ -118,8 +122,8 @@ def gradient_descent(f, x, x_0, α, n=1):
   """
   Performs `n` iterations of gradient descent
 
-  >>> "%.06f" % gradient_descent(x**2 + 1, x, .6, .01, n=3)
-  '0.564715'
+  >>> gradient_descent(x**2 + 1, [x], [.6], .01, n=3)
+  [0.564715200000000]
   """
 
   x_n = x_0
@@ -138,6 +142,13 @@ $f(x,y) = (x-7)^2 + (y-3)^2$
 Before we can begin to apply the numeric portion of our algorithm, we'll need to take our partial derivatives so that we can craft a gradient to follow.
 
 $f(x,y) = (x-7)^2 + (y-3)^2$
+
+```python
+y = Symbol('y')
+
+print(diff((x-7)**2 + (y-3)**2, x))
+print(diff((x-7)**2 + (y-3)**2, x, y))
+```
 
 
 Problem 3
