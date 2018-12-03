@@ -111,6 +111,25 @@ def gradient_descent_step(f, x, x_0, α):
   return x_0 - α*diff(f,x).subs(x, x_0)
 ```
 
+That takes care of one interation, now let's add a helper to perform `n` iterations.
+
+```python
+def gradient_descent(f, x, x_0, α, n=1):
+  """
+  Performs `n` iterations of gradient descent
+
+  >>> "%.06f" % gradient_descent(x**2 + 1, x, .6, .01, n=3)
+  '0.564715'
+  """
+
+  x_n = x_0
+
+  for _ in range(0,n):
+    x_n = gradient_descent_step(f, x, x_n, α)
+
+  return x_n
+```
+
 Problem 2
 =========
 
