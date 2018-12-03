@@ -126,9 +126,7 @@ def gradient_descent(f, x, x_0, α, n=1):
 
   x_n = [v0 - α*diff(f,v).subs(v, v0) for (v,v0) in zip(x, x_0)]
 
-  if n==1: return x_n
-  
-  return gradient_descent(f, x, x_n, α, n=n-1)
+  return gradient_descent(f, x, x_n, α, n=n-1) if n > 1 else x_n
 ```
 
 Problem 2
